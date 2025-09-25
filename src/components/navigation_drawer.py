@@ -7,6 +7,14 @@ class NavigationDrawerComponent:
         self.on_destination_select = on_destination_select
         self.on_dismiss = on_dismiss
         self.drawer = None
+        # สร้าง mapping ระหว่าง route และ index
+        self.route_to_index = {
+            "/": 0,
+            "/home": 0,
+            "/chat": 1,
+            "/feed": 2,
+            "/settings": 3,
+        }
     
     def handle_dismissal(self, e):
         """Handle drawer dismissal"""
@@ -24,11 +32,16 @@ class NavigationDrawerComponent:
         if self.on_destination_select:
             self.on_destination_select(selected_index)
     
+    def get_selected_index(self):
+        """Get the selected index based on current route"""
+        return self.route_to_index.get(self.page.route, 0)
+    
     def build(self):
         """Build the NavigationDrawer component"""
         self.drawer = ft.NavigationDrawer(
             on_dismiss=self.handle_dismissal,
             on_change=self.handle_change,
+            selected_index=self.get_selected_index(),
             controls=[
                 ft.Container(height=12),
                 ft.NavigationDrawerDestination(
