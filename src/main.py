@@ -1,4 +1,5 @@
 import flet as ft
+from components.navigation_bar import NavigationBarComponent
 
 
 def main(page: ft.Page):
@@ -12,13 +13,7 @@ def main(page: ft.Page):
         )
     )
 
-    page.navigation_bar = ft.NavigationBar(
-        destinations=[
-            ft.NavigationBarDestination(label="Home", icon=ft.Icons.HOME),
-            ft.NavigationBarDestination(label="Feed", icon=ft.Icons.FEED),
-            ft.NavigationBarDestination(label="Chat", icon=ft.Icons.CHAT),
-        ]
-    )
+    page.navigation_bar = NavigationBarComponent(page).build()
 
     page.update()
 
