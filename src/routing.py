@@ -3,7 +3,8 @@ from pages.home import HomePage
 from pages.chat import ChatPage
 from pages.feed import FeedPage
 from components.navigation_bar import NavigationBarComponent
-
+from components.app_bar import AppBarComponent
+from components.navigation_drawer import NavigationDrawerComponent
 
 def route_change(e: ft.RouteChangeEvent):
     """Handle route changes"""

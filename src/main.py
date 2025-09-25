@@ -12,7 +12,6 @@ def main(page: ft.Page):
             windows=ft.PageTransitionTheme.NONE,
         )
     )
-
     page.on_route_change = route_change
     page.go("/home")  # เริ่มต้นที่หน้า home
     page.update()
