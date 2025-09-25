@@ -1,5 +1,4 @@
 import flet as ft
-from components.navigation_bar import NavigationBarComponent
 from routing import route_change
 
 
@@ -14,8 +13,8 @@ def main(page: ft.Page):
         )
     )
 
-    page.navigation_bar = NavigationBarComponent(page).build()
     page.on_route_change = route_change
+    page.go("/home")  # เริ่มต้นที่หน้า home
     page.update()
 
 

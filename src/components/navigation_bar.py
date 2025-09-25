@@ -10,9 +10,20 @@ class NavigationBarComponent:
             1: "/feed",
             2: "/chat",
         }
+        # สร้าง reverse mapping เพื่อหา index จาก route
+        self.route_to_index = {
+            "/": 0,
+            "/home": 0,
+            "/feed": 1,
+            "/chat": 2,
+        }
     
     def set_page(self, e):
         self.page.go(self.routes[e.control.selected_index])
+    
+    def get_selected_index(self):
+        """Get the selected index based on current route"""
+        return self.route_to_index.get(self.page.route, 0)
     
     def build(self):
         """Build the NavigationBar component"""
@@ -22,6 +33,6 @@ class NavigationBarComponent:
                 ft.NavigationBarDestination(label="Feed", icon=ft.Icons.FEED),
                 ft.NavigationBarDestination(label="Chat", icon=ft.Icons.CHAT),
             ],
-            selected_index=None,
+            selected_index=self.get_selected_index(),
             on_change=lambda e: self.set_page(e)
         )
